@@ -1,0 +1,700 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title></title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="2575.7">
+  <style type="text/css">
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
+    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; min-height: 14.0px}
+  </style>
+</head>
+<body>
+<p class="p1">&lt;!doctype html&gt;</p>
+<p class="p1">&lt;html lang="zh-CN"&gt;</p>
+<p class="p1">&lt;head&gt;</p>
+<p class="p1">&lt;meta charset="utf-8" /&gt;</p>
+<p class="p1">&lt;meta name="viewport" content="width=device-width,initial-scale=1" /&gt;</p>
+<p class="p1">&lt;title&gt;把字句语法游戏 - 房间整理大挑战&lt;/title&gt;</p>
+<p class="p1">&lt;style&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>/* 全局风格 &amp; 渐变背景 */</p>
+<p class="p1"><span class="Apple-converted-space">  </span>:root{</p>
+<p class="p1"><span class="Apple-converted-space">    </span>--bg1: #4b6cb7;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>--bg2: #182848;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>--card-bg: rgba(255,255,255,0.95);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>--accent: #8a2be2;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>--green: #2ecc71;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>--red: #e74c3c;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>--shadow: 0 6px 18px rgba(11,20,40,0.18);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>--radius: 14px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>--glass: rgba(255,255,255,0.06);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>--glass-2: rgba(255,255,255,0.03);</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>html,body{</p>
+<p class="p1"><span class="Apple-converted-space">    </span>height:100%;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>margin:0;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>font-family: "Helvetica Neue", Arial, "PingFang SC", "Microsoft YaHei", "Songti SC", sans-serif;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>background: linear-gradient(135deg,var(--bg1),var(--bg2));</p>
+<p class="p1"><span class="Apple-converted-space">    </span>color:#07203a;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.container{</p>
+<p class="p1"><span class="Apple-converted-space">    </span>max-width:1100px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>margin:28px auto;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>padding:18px;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>/* 标题栏 */</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.header{</p>
+<p class="p1"><span class="Apple-converted-space">    </span>background: linear-gradient(90deg, rgba(255,255,255,0.08), rgba(255,255,255,0.03));</p>
+<p class="p1"><span class="Apple-converted-space">    </span>border-radius: 18px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>padding:18px 20px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>display:flex;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>align-items:center;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>gap:16px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>box-shadow: var(--shadow);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>color: #fff;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.logo{</p>
+<p class="p1"><span class="Apple-converted-space">    </span>width:72px;height:72px;border-radius:12px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>background: linear-gradient(135deg,#ffffff22,#ffffff11);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>display:flex;align-items:center;justify-content:center;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>font-size:34px;border:1px solid rgba(255,255,255,0.06);</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.title{</p>
+<p class="p1"><span class="Apple-converted-space">    </span>flex:1;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.title h1{</p>
+<p class="p1"><span class="Apple-converted-space">    </span>margin:0;font-size:20px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>letter-spacing:0.4px;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.title p{margin:4px 0 0 0;color:#e8eef9;font-size:13px;opacity:0.9;}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>/* 主区：左房间 + 右控制区 */</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.main{</p>
+<p class="p1"><span class="Apple-converted-space">    </span>margin-top:18px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>display:flex;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>gap:16px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>align-items:flex-start;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>/* 卡片风格 */</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.card{</p>
+<p class="p1"><span class="Apple-converted-space">    </span>background:var(--card-bg);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>border-radius:var(--radius);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>padding:14px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>box-shadow: var(--shadow);</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>/* 左侧房间 */</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.room{</p>
+<p class="p1"><span class="Apple-converted-space">    </span>flex:2;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>min-height:420px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>position:relative;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>overflow:hidden;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.room-canvas{</p>
+<p class="p1"><span class="Apple-converted-space">    </span>position:relative;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>border-radius:12px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>height:100%;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>background:</p>
+<p class="p1"><span class="Apple-converted-space">      </span>linear-gradient(180deg, rgba(255,255,255,0.03), rgba(0,0,0,0.03)),</p>
+<p class="p1"><span class="Apple-converted-space">      </span>url('data:image/svg+xml;utf8,&lt;svg xmlns="http://www.w3.org/2000/svg" width="600" height="400"&gt;&lt;rect width="100%" height="100%" fill="%23182b4a"/&gt;&lt;/svg&gt;') center/cover no-repeat;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>padding:18px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>display:flex;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>gap:12px;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>/* 房间背景分区（地板与墙） */</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.room-inner{</p>
+<p class="p1"><span class="Apple-converted-space">    </span>flex:1;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>border-radius:12px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>padding:12px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>display:flex;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>flex-direction:column;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.room-top{</p>
+<p class="p1"><span class="Apple-converted-space">    </span>flex:1;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.02));</p>
+<p class="p1"><span class="Apple-converted-space">    </span>border-radius:10px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>position:relative;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>padding:8px;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.room-bottom{</p>
+<p class="p1"><span class="Apple-converted-space">    </span>margin-top:10px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>display:flex;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>gap:10px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>align-items:center;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>justify-content:space-around;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>/* 目标区域外观（书架、桌子等） */</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.target{</p>
+<p class="p1"><span class="Apple-converted-space">    </span>width:110px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>height:90px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>border-radius:10px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>background:var(--glass-2);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>border:2px dashed rgba(0,0,0,0.06);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>display:flex;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>align-items:center;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>justify-content:center;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>flex-direction:column;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>font-size:13px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>color:#0a2340;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>text-align:center;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>padding:6px;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.target.highlight{</p>
+<p class="p1"><span class="Apple-converted-space">    </span>border-style:solid;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>box-shadow:0 10px 20px rgba(0,0,0,0.12);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>transform:translateY(-4px);</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.target small{font-size:11px;color:#023;opacity:0.7;}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>/* 可拖动物品 */</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.items-pool{</p>
+<p class="p1"><span class="Apple-converted-space">    </span>display:flex;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>flex-wrap:wrap;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>gap:10px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>align-items:center;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>padding:8px;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.item{</p>
+<p class="p1"><span class="Apple-converted-space">    </span>width:84px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>height:84px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>border-radius:12px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>background: linear-gradient(180deg, rgba(255,255,255,0.98), rgba(250,250,250,0.96));</p>
+<p class="p1"><span class="Apple-converted-space">    </span>display:flex;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>flex-direction:column;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>align-items:center;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>justify-content:center;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>box-shadow: 0 6px 14px rgba(6,20,40,0.08);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>cursor:grab;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>user-select:none;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>transition: transform .15s ease, box-shadow .15s ease;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>touch-action: none;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.item:active{ cursor:grabbing; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.item .emoji{ font-size:30px; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.item .label{ font-size:13px; margin-top:6px; color:#123; }</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>/* 拖动时效果（通过 JS 控制类） */</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.dragging{</p>
+<p class="p1"><span class="Apple-converted-space">    </span>transform:scale(1.08);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>box-shadow: 0 20px 40px rgba(6,20,40,0.22) !important;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>z-index:9999;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>/* 右侧控制区 */</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.control{</p>
+<p class="p1"><span class="Apple-converted-space">    </span>flex:1;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>min-width:300px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>display:flex;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>flex-direction:column;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>gap:12px;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.sentences{</p>
+<p class="p1"><span class="Apple-converted-space">    </span>max-height:320px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>overflow:auto;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>padding:8px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>display:flex;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>flex-direction:column;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>gap:8px;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.sentence-row{</p>
+<p class="p1"><span class="Apple-converted-space">    </span>display:flex;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>align-items:center;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>justify-content:space-between;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>gap:8px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>padding:8px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>border-radius:10px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>background: linear-gradient(180deg, rgba(255,255,255,0.98), rgba(250,250,250,0.96));</p>
+<p class="p1"><span class="Apple-converted-space">    </span>box-shadow: 0 6px 14px rgba(6,20,40,0.04);</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.sentence-row .text{flex:1;font-size:14px;color:#063;}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.sentence-row .status{width:28px;text-align:center;font-size:18px;}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>.controls-footer{ display:flex; gap:10px; align-items:center; justify-content:space-between; margin-top:auto; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.btn{</p>
+<p class="p1"><span class="Apple-converted-space">    </span>background:linear-gradient(180deg,#fff,#f2f3f8);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>border-radius:10px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>padding:10px 12px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>border:1px solid rgba(6,20,40,0.06);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>cursor:pointer;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>box-shadow: 0 6px 14px rgba(6,20,40,0.06);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>font-weight:600;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.btn.primary{</p>
+<p class="p1"><span class="Apple-converted-space">    </span>background: linear-gradient(90deg,var(--accent), #6a5acd);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>color:#fff;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>border:none;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.btn.warn{ background: linear-gradient(90deg,#ff9a9e,#fecfef); }</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>/* 漂浮提示框（toast） */</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.toast{</p>
+<p class="p1"><span class="Apple-converted-space">    </span>position:fixed;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>right:22px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>top:22px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>min-width:220px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>padding:12px 14px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>border-radius:10px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>color:#fff;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>display:flex;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>gap:8px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>align-items:center;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>box-shadow:0 12px 30px rgba(0,0,0,0.25);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>z-index:99999;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>opacity:0;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>transform:translateY(-8px);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>transition:opacity .22s ease, transform .22s ease;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.toast.show{ opacity:1; transform:translateY(0); }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.toast.ok{ background: linear-gradient(90deg, #2ecc71, #27ae60); }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.toast.err{ background: linear-gradient(90deg, #e74c3c, #c0392b); }</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>/* 游戏说明 */</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.rules{ font-size:14px; color:#f5f7fb; opacity:0.95; line-height:1.5; }</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>/* 响应式 */</p>
+<p class="p1"><span class="Apple-converted-space">  </span>@media (max-width:900px){</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.main{ flex-direction:column; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.room{ order:2; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.control{ order:1; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.container{ padding:12px; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1">&lt;/style&gt;</p>
+<p class="p1">&lt;/head&gt;</p>
+<p class="p1">&lt;body&gt;</p>
+<p class="p1">&lt;div class="container"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;!-- 顶部标题栏 --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;div class="header card" role="banner" aria-label="游戏标题栏"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="logo" aria-hidden="true"&gt;把&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="title"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;h1&gt;把字句语法游戏 - 房间整理大挑战&lt;/h1&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;p&gt;通过拖拽物品到正确的位置，练习“把”字句的结构与用法。&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div style="min-width:200px;color:#eaf0ff;font-size:13px;text-align:right;"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>难度：初级 · 可练习句型：把 + 宾语 + 动词 + 在/到/进 + 处所</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;!-- 游戏说明区 --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;div style="margin-top:14px;" class="card rules"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;strong&gt;游戏规则：&lt;/strong&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;ol&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;li&gt;将左侧房间中的物品（书、苹果、衣服、鞋子、玩具）拖到你认为正确的目标区域（书架、桌子、衣柜、鞋架、箱子）。&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;li&gt;放置后右侧会自动生成对应的“把”字句，例如：&lt;em&gt;我把书放在书架上。&lt;/em&gt;&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;li&gt;如果放对，会显示 ✅；放错则显示 ❌ 并给出提示。可以点击“检查句子”检测全部句子，或点击“重置游戏”重新开始。&lt;/li&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/ol&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;strong&gt;把字句结构说明：&lt;/strong&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;p&gt;常见结构：&lt;code&gt;我 + 把 + &lt;em&gt;宾语&lt;/em&gt; + &lt;em&gt;动词&lt;/em&gt; + &lt;em&gt;处所短语&lt;/em&gt;&lt;/code&gt;。例如：&lt;em&gt;我把苹果放在桌子上。&lt;/em&gt;&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;!-- 主区域 --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;div class="main"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;!-- 左：房间 --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="room card" aria-label="房间区域"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="room-canvas"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="room-inner" id="roomInner"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="room-top" id="roomTop" aria-label="房间顶部（放置目标的地方）"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;!-- 目标区域（摆放在顶部或底部，根据语义） --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div style="display:flex;gap:12px;align-items:flex-start;"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;!-- Targets will be injected here --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;!-- 可拖动物品池 --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div style="margin-top:12px;"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;div style="font-size:13px;color:#eaf0ff;margin-bottom:6px;"&gt;可移动物品：&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;div class="items-pool" id="itemsPool" aria-label="物品池"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;!-- Items will be injected here --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">              </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;div class="room-bottom" id="roomBottom" aria-hidden="true"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;!-- 底部也可放置目标（例如鞋架、箱子） --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;!-- 右：控制区 --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="control card" aria-label="控制区"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div style="font-weight:700;margin-bottom:6px;"&gt;生成的句子&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="sentences" id="sentencesList" aria-live="polite"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;!-- 句子行会被注入 --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div style="font-size:13px;color:#223;margin-top:6px;"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;strong&gt;语法说明&lt;/strong&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;p style="margin:6px 0 0 0;font-size:13px;color:#334;"&gt;本游戏固定使用动词与处所搭配（例如“放在书架上”、“放进衣柜里”）。句子生成规则在下方代码注释中说明。&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="controls-footer"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div style="display:flex;gap:10px;"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;button class="btn primary" id="checkBtn"&gt;检查句子&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>&lt;button class="btn" id="resetBtn"&gt;重置游戏&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div style="font-size:13px;color:#556;align-self:center;"&gt;已放置：&lt;span id="placedCount"&gt;0&lt;/span&gt;/5&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</p>
+<p class="p1">&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;!-- 漂浮反馈提示框 --&gt;</p>
+<p class="p1">&lt;div id="toast" class="toast" role="status" aria-live="polite"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;div id="toastIcon" style="font-size:18px;"&gt;✅&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;div id="toastText" style="font-size:14px;"&gt;放置正确！&lt;/div&gt;</p>
+<p class="p1">&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;script&gt;</p>
+<p class="p1">/*</p>
+<p class="p1"><span class="Apple-converted-space">  </span>把字句语法游戏 - 单文件说明（JS 部分注释说明）</p>
+<p class="p1"><span class="Apple-converted-space">  </span>- itemsData: 物品数据（id, 名称, emoji, 正确目标 targetId, 正确句子的动词短语）</p>
+<p class="p1"><span class="Apple-converted-space">  </span>- targetsData: 目标区域数据（id, 名称, 简短描述）</p>
+<p class="p1"><span class="Apple-converted-space">  </span>- 游戏逻辑：</p>
+<p class="p1"><span class="Apple-converted-space">      </span>1) 页面初始化渲染目标区域与物品（写死在代码中）</p>
+<p class="p1"><span class="Apple-converted-space">      </span>2) 用户拖动 item 到 target（支持鼠标拖拽与触摸）</p>
+<p class="p1"><span class="Apple-converted-space">      </span>3) 放下时（drop）：</p>
+<p class="p1"><span class="Apple-converted-space">         </span>- 记录 item 的放置 target</p>
+<p class="p1"><span class="Apple-converted-space">         </span>- 生成把字句：我把{物品名}{动词短语}{目标名}（可含“上/里”后缀）</p>
+<p class="p1"><span class="Apple-converted-space">         </span>- 在右侧句子区显示，并根据是否匹配正确目标显示✅或❌</p>
+<p class="p1"><span class="Apple-converted-space">      </span>4) 点击“检查句子”：对当前所有已生成的句子进行校验（并显示总体结果）</p>
+<p class="p1"><span class="Apple-converted-space">      </span>5) 点击“重置游戏”：清空放置记录并把物品回到起始位置（随机排列）</p>
+<p class="p1"><span class="Apple-converted-space">  </span>- 反馈机制：showToast(message, type) 显示绿色（ok）或红色（err）提示</p>
+<p class="p1">*/</p>
+<p class="p2"><br></p>
+<p class="p1">/////////////////////////////////////////</p>
+<p class="p1">// 1) 数据：物品、目标（全部写死）</p>
+<p class="p1">/////////////////////////////////////////</p>
+<p class="p1">const itemsData = [</p>
+<p class="p1"><span class="Apple-converted-space">  </span>// id, label, emoji, correctTargetId, verbPhrase (动词 + 处所)</p>
+<p class="p1"><span class="Apple-converted-space">  </span>{ id: 'book',<span class="Apple-converted-space">  </span>label: '书', <span class="Apple-converted-space">  </span>emoji: '📚', correctTarget: 'bookshelf', verb: '放在', placeSuffix: '上' }, // 我把书放在书架上</p>
+<p class="p1"><span class="Apple-converted-space">  </span>{ id: 'apple', label: '苹果', emoji: '🍎', correctTarget: 'table', <span class="Apple-converted-space">    </span>verb: '放在', placeSuffix: '上' }, // 我把苹果放在桌子上</p>
+<p class="p1"><span class="Apple-converted-space">  </span>{ id: 'clothes', label: '衣服', emoji: '👕', correctTarget: 'wardrobe', verb: '放进', placeSuffix: '里' }, // 我把衣服放进衣柜里</p>
+<p class="p1"><span class="Apple-converted-space">  </span>{ id: 'shoes', label: '鞋子', emoji: '👟', correctTarget: 'shoe_rack', verb: '放在', placeSuffix: '上' }, // 我把鞋子放在鞋架上</p>
+<p class="p1"><span class="Apple-converted-space">  </span>{ id: 'toy', label: '玩具', emoji: '🧸', correctTarget: 'box', <span class="Apple-converted-space">      </span>verb: '放进', placeSuffix: '里' }<span class="Apple-converted-space">  </span>// 我把玩具放进箱子里</p>
+<p class="p1">];</p>
+<p class="p2"><br></p>
+<p class="p1">const targetsData = [</p>
+<p class="p1"><span class="Apple-converted-space">  </span>// id, label</p>
+<p class="p1"><span class="Apple-converted-space">  </span>{ id: 'bookshelf', label: '书架' },</p>
+<p class="p1"><span class="Apple-converted-space">  </span>{ id: 'table', label: '桌子' },</p>
+<p class="p1"><span class="Apple-converted-space">  </span>{ id: 'wardrobe', label: '衣柜' },</p>
+<p class="p1"><span class="Apple-converted-space">  </span>{ id: 'shoe_rack', label: '鞋架' },</p>
+<p class="p1"><span class="Apple-converted-space">  </span>{ id: 'box', label: '箱子' }</p>
+<p class="p1">];</p>
+<p class="p2"><br></p>
+<p class="p1">/////////////////////////////////////////</p>
+<p class="p1">// 2) 状态：存放用户放置信息（itemId -&gt; targetId）</p>
+<p class="p1">/////////////////////////////////////////</p>
+<p class="p1">let placements = {}; // e.g. { book: 'bookshelf', apple: 'table', ... }</p>
+<p class="p2"><br></p>
+<p class="p1">/////////////////////////////////////////</p>
+<p class="p1">// 3) 渲染函数（生成 DOM）</p>
+<p class="p1">/////////////////////////////////////////</p>
+<p class="p1">const itemsPool = document.getElementById('itemsPool');</p>
+<p class="p1">const sentencesList = document.getElementById('sentencesList');</p>
+<p class="p1">const placedCountEl = document.getElementById('placedCount');</p>
+<p class="p1">const roomTop = document.getElementById('roomTop');</p>
+<p class="p2"><br></p>
+<p class="p1">function createTargetsUI(){</p>
+<p class="p1"><span class="Apple-converted-space">  </span>// 将目标放在顶部/底部区域（此处全部放在顶部作为可视化）</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const container = roomTop.querySelector('div'); // the flex container</p>
+<p class="p1"><span class="Apple-converted-space">  </span>container.innerHTML = '';</p>
+<p class="p1"><span class="Apple-converted-space">  </span>targetsData.forEach(t =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const el = document.createElement('div');</p>
+<p class="p1"><span class="Apple-converted-space">    </span>el.className = 'target';</p>
+<p class="p1"><span class="Apple-converted-space">    </span>el.dataset.targetId = t.id;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>el.innerHTML = `&lt;strong&gt;${t.label}&lt;/strong&gt;&lt;small&gt;(${t.id})&lt;/small&gt;`;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>// 添加 drop 事件</p>
+<p class="p1"><span class="Apple-converted-space">    </span>addDropHandlers(el);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>container.appendChild(el);</p>
+<p class="p1"><span class="Apple-converted-space">  </span>});</p>
+<p class="p1">}</p>
+<p class="p2"><br></p>
+<p class="p1">function createItemsUI(){</p>
+<p class="p1"><span class="Apple-converted-space">  </span>itemsPool.innerHTML = '';</p>
+<p class="p1"><span class="Apple-converted-space">  </span>// 在每次渲染时将 items 随机打乱位置（便于练习）</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const shuffled = itemsData.slice().sort(()=&gt;Math.random()-0.5);</p>
+<p class="p1"><span class="Apple-converted-space">  </span>shuffled.forEach(it =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const el = document.createElement('div');</p>
+<p class="p1"><span class="Apple-converted-space">    </span>el.className = 'item';</p>
+<p class="p1"><span class="Apple-converted-space">    </span>el.draggable = true;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>el.id = 'item-' + it.id;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>el.dataset.itemId = it.id;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>el.innerHTML = `&lt;div class="emoji"&gt;${it.emoji}&lt;/div&gt;&lt;div class="label"&gt;${it.label}&lt;/div&gt;`;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>// 绑定 drag 事件（桌面）</p>
+<p class="p1"><span class="Apple-converted-space">    </span>el.addEventListener('dragstart', onDragStart);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>el.addEventListener('dragend', onDragEnd);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>// 绑定 pointer/touch 以支持移动端拖拽模拟</p>
+<p class="p1"><span class="Apple-converted-space">    </span>addPointerDrag(el);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>itemsPool.appendChild(el);</p>
+<p class="p1"><span class="Apple-converted-space">  </span>});</p>
+<p class="p1"><span class="Apple-converted-space">  </span>updatePlacedCount();</p>
+<p class="p1"><span class="Apple-converted-space">  </span>renderSentences(); // 清空或更新</p>
+<p class="p1">}</p>
+<p class="p2"><br></p>
+<p class="p1">/////////////////////////////////////////</p>
+<p class="p1">// 4) 拖拽：HTML5 drag and drop + pointer 支持</p>
+<p class="p1">/////////////////////////////////////////</p>
+<p class="p1">let draggedItemId = null;</p>
+<p class="p2"><br></p>
+<p class="p1">// 鼠标 / 桌面 dragstart</p>
+<p class="p1">function onDragStart(e){</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const id = e.target.dataset.itemId;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>draggedItemId = id;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>e.dataTransfer.setData('text/plain', id);</p>
+<p class="p1"><span class="Apple-converted-space">  </span>// 小效果</p>
+<p class="p1"><span class="Apple-converted-space">  </span>e.target.classList.add('dragging');</p>
+<p class="p1"><span class="Apple-converted-space">  </span>// highlight target candidates</p>
+<p class="p1"><span class="Apple-converted-space">  </span>document.querySelectorAll('.target').forEach(t =&gt; t.classList.add('highlight'));</p>
+<p class="p1">}</p>
+<p class="p1">function onDragEnd(e){</p>
+<p class="p1"><span class="Apple-converted-space">  </span>e.target.classList.remove('dragging');</p>
+<p class="p1"><span class="Apple-converted-space">  </span>draggedItemId = null;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>document.querySelectorAll('.target').forEach(t =&gt; t.classList.remove('highlight'));</p>
+<p class="p1">}</p>
+<p class="p2"><br></p>
+<p class="p1">// 为目标添加 drop 事件处理</p>
+<p class="p1">function addDropHandlers(targetEl){</p>
+<p class="p1"><span class="Apple-converted-space">  </span>targetEl.addEventListener('dragover', e =&gt; { e.preventDefault(); });</p>
+<p class="p1"><span class="Apple-converted-space">  </span>targetEl.addEventListener('dragenter', e =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>e.preventDefault();</p>
+<p class="p1"><span class="Apple-converted-space">    </span>targetEl.classList.add('highlight');</p>
+<p class="p1"><span class="Apple-converted-space">  </span>});</p>
+<p class="p1"><span class="Apple-converted-space">  </span>targetEl.addEventListener('dragleave', e =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>targetEl.classList.remove('highlight');</p>
+<p class="p1"><span class="Apple-converted-space">  </span>});</p>
+<p class="p1"><span class="Apple-converted-space">  </span>targetEl.addEventListener('drop', e =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>e.preventDefault();</p>
+<p class="p1"><span class="Apple-converted-space">    </span>targetEl.classList.remove('highlight');</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const itemId = draggedItemId || e.dataTransfer.getData('text/plain');</p>
+<p class="p1"><span class="Apple-converted-space">    </span>if(itemId) handleDrop(itemId, targetEl.dataset.targetId);</p>
+<p class="p1"><span class="Apple-converted-space">  </span>});</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>// 支持触控放置（当我们用 pointerup 模拟 drop 时，也能调用 handleDrop）</p>
+<p class="p1">}</p>
+<p class="p2"><br></p>
+<p class="p1">// touch / pointer 模拟拖拽（为移动端优化）</p>
+<p class="p1">// 采用按下 -&gt; 移动元素跟随 -&gt; 松手检测目标位置 的思路</p>
+<p class="p1">function addPointerDrag(el){</p>
+<p class="p1"><span class="Apple-converted-space">  </span>let pointerActive = false;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>let startX=0, startY=0, offsetX=0, offsetY=0;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>let clone = null;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>el.addEventListener('pointerdown', (e) =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>e.preventDefault();</p>
+<p class="p1"><span class="Apple-converted-space">    </span>pointerActive = true;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>el.setPointerCapture(e.pointerId);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>startX = e.clientX; startY = e.clientY;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const rect = el.getBoundingClientRect();</p>
+<p class="p1"><span class="Apple-converted-space">    </span>offsetX = startX - rect.left; offsetY = startY - rect.top;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>// 创建一个克隆用于跟随指针</p>
+<p class="p1"><span class="Apple-converted-space">    </span>clone = el.cloneNode(true);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>clone.style.position = 'fixed';</p>
+<p class="p1"><span class="Apple-converted-space">    </span>clone.style.left = (e.clientX - offsetX) + 'px';</p>
+<p class="p1"><span class="Apple-converted-space">    </span>clone.style.top = (e.clientY - offsetY) + 'px';</p>
+<p class="p1"><span class="Apple-converted-space">    </span>clone.style.pointerEvents = 'none';</p>
+<p class="p1"><span class="Apple-converted-space">    </span>clone.classList.add('dragging');</p>
+<p class="p1"><span class="Apple-converted-space">    </span>clone.id = 'clone-' + el.dataset.itemId;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>document.body.appendChild(clone);</p>
+<p class="p1"><span class="Apple-converted-space">  </span>});</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>window.addEventListener('pointermove', (e) =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>if(!pointerActive || !clone) return;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>clone.style.left = (e.clientX - offsetX) + 'px';</p>
+<p class="p1"><span class="Apple-converted-space">    </span>clone.style.top = (e.clientY - offsetY) + 'px';</p>
+<p class="p1"><span class="Apple-converted-space">  </span>});</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>window.addEventListener('pointerup', (e) =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>if(!pointerActive) return;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>pointerActive = false;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>if(clone){</p>
+<p class="p1"><span class="Apple-converted-space">      </span>// 检查指针抬起时是否位于某个 target 内</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const dropTarget = document.elementsFromPoint(e.clientX, e.clientY).find(el =&gt; el.classList &amp;&amp; el.classList.contains('target'));</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const itemId = el.dataset.itemId;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>if(dropTarget){</p>
+<p class="p1"><span class="Apple-converted-space">        </span>handleDrop(itemId, dropTarget.dataset.targetId);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>} else {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>// 若没有放到目标，视为放回原位（无需改变 placements）</p>
+<p class="p1"><span class="Apple-converted-space">        </span>showToast('没有放到目标位置，已回到原处。', 'err');</p>
+<p class="p1"><span class="Apple-converted-space">      </span>}</p>
+<p class="p1"><span class="Apple-converted-space">      </span>clone.remove();</p>
+<p class="p1"><span class="Apple-converted-space">      </span>clone = null;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>});</p>
+<p class="p1">}</p>
+<p class="p2"><br></p>
+<p class="p1">/////////////////////////////////////////</p>
+<p class="p1">// 5) 放置处理：生成句子并校验正确性</p>
+<p class="p1">/////////////////////////////////////////</p>
+<p class="p1">function handleDrop(itemId, targetId){</p>
+<p class="p1"><span class="Apple-converted-space">  </span>// 记录放置</p>
+<p class="p1"><span class="Apple-converted-space">  </span>placements[itemId] = targetId;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>// 生成句子并渲染</p>
+<p class="p1"><span class="Apple-converted-space">  </span>renderSentences();</p>
+<p class="p1"><span class="Apple-converted-space">  </span>// 立即给出单条反馈（正确/错误）</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const item = itemsData.find(i=&gt;i.id===itemId);</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const correct = (item.correctTarget === targetId);</p>
+<p class="p1"><span class="Apple-converted-space">  </span>if(correct){</p>
+<p class="p1"><span class="Apple-converted-space">    </span>showToast(`✅ 放置正确：我把${item.label}${item.verb}${getTargetLabel(targetId)}${item.placeSuffix}。`, 'ok');</p>
+<p class="p1"><span class="Apple-converted-space">  </span>} else {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const correctLabel = getTargetLabel(item.correctTarget);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>showToast(`❌ 放置错误：${item.label} 应该放在 ${correctLabel}${item.placeSuffix}。`, 'err');</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>updatePlacedCount();</p>
+<p class="p1">}</p>
+<p class="p2"><br></p>
+<p class="p1">// 根据 targetId 返回标签</p>
+<p class="p1">function getTargetLabel(targetId){</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const t = targetsData.find(x=&gt;x.id===targetId);</p>
+<p class="p1"><span class="Apple-converted-space">  </span>return t ? t.label : targetId;</p>
+<p class="p1">}</p>
+<p class="p2"><br></p>
+<p class="p1">/////////////////////////////////////////</p>
+<p class="p1">// 6) 句子渲染与校验函数</p>
+<p class="p1">/////////////////////////////////////////</p>
+<p class="p1">function makeSentenceFor(itemId){</p>
+<p class="p1"><span class="Apple-converted-space">  </span>// 生成把字句（不论放对放错都生成当前放置目标的句子，如果未放置则返回空）</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const placement = placements[itemId];</p>
+<p class="p1"><span class="Apple-converted-space">  </span>if(!placement) return '';</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const item = itemsData.find(i=&gt;i.id===itemId);</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const targetLabel = getTargetLabel(placement);</p>
+<p class="p1"><span class="Apple-converted-space">  </span>// 例：我把书放在书架上</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const sentence = `我把${item.label}${item.verb}${targetLabel}${item.placeSuffix}。`;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>return sentence;</p>
+<p class="p1">}</p>
+<p class="p2"><br></p>
+<p class="p1">function checkSentenceCorrect(itemId){</p>
+<p class="p1"><span class="Apple-converted-space">  </span>// 返回 { correct:boolean, expectedSentence:string, actualSentence:string }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const item = itemsData.find(i=&gt;i.id===itemId);</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const actualTarget = placements[itemId];</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const expectedTarget = item.correctTarget;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const expectedSentence = `我把${item.label}${item.verb}${getTargetLabel(expectedTarget)}${item.placeSuffix}。`;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const actualSentence = actualTarget ? makeSentenceFor(itemId) : '';</p>
+<p class="p1"><span class="Apple-converted-space">  </span>return {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>correct: actualTarget === expectedTarget,</p>
+<p class="p1"><span class="Apple-converted-space">    </span>expectedSentence,</p>
+<p class="p1"><span class="Apple-converted-space">    </span>actualSentence</p>
+<p class="p1"><span class="Apple-converted-space">  </span>};</p>
+<p class="p1">}</p>
+<p class="p2"><br></p>
+<p class="p1">function renderSentences(){</p>
+<p class="p1"><span class="Apple-converted-space">  </span>sentencesList.innerHTML = '';</p>
+<p class="p1"><span class="Apple-converted-space">  </span>// 对所有 items 渲染行（包括未放置的，未放置则提示“未放置”）</p>
+<p class="p1"><span class="Apple-converted-space">  </span>itemsData.forEach(it =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const row = document.createElement('div');</p>
+<p class="p1"><span class="Apple-converted-space">    </span>row.className = 'sentence-row';</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const textDiv = document.createElement('div');</p>
+<p class="p1"><span class="Apple-converted-space">    </span>textDiv.className = 'text';</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const statusDiv = document.createElement('div');</p>
+<p class="p1"><span class="Apple-converted-space">    </span>statusDiv.className = 'status';</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const placed = !!placements[it.id];</p>
+<p class="p1"><span class="Apple-converted-space">    </span>if(placed){</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const res = checkSentenceCorrect(it.id);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>textDiv.textContent = res.actualSentence;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>statusDiv.textContent = res.correct ? '✅' : '❌';</p>
+<p class="p1"><span class="Apple-converted-space">      </span>if(!res.correct){</p>
+<p class="p1"><span class="Apple-converted-space">        </span>// 如果错误，添加简短提示（hover 可见）</p>
+<p class="p1"><span class="Apple-converted-space">        </span>textDiv.title = `正确写法应为：${res.expectedSentence}`;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>} else {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>textDiv.title = '正确';</p>
+<p class="p1"><span class="Apple-converted-space">      </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>} else {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>textDiv.textContent = `（未放置）我把${it.label} ...`;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>statusDiv.textContent = '—';</p>
+<p class="p1"><span class="Apple-converted-space">      </span>textDiv.title = '请把物品拖到目标位置生成句子';</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>row.appendChild(textDiv);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>row.appendChild(statusDiv);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>sentencesList.appendChild(row);</p>
+<p class="p1"><span class="Apple-converted-space">  </span>});</p>
+<p class="p1">}</p>
+<p class="p2"><br></p>
+<p class="p1">/////////////////////////////////////////</p>
+<p class="p1">// 7) 检查与重置按钮逻辑</p>
+<p class="p1">/////////////////////////////////////////</p>
+<p class="p1">document.getElementById('checkBtn').addEventListener('click', () =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">  </span>// 对所有 items 做检查</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const results = itemsData.map(it =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const r = checkSentenceCorrect(it.id);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>return r.correct;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>});</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const correctCount = results.filter(Boolean).length;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>if(correctCount === itemsData.length){</p>
+<p class="p1"><span class="Apple-converted-space">    </span>showToast(`太棒了！全部 ${correctCount} 个句子都正确 ✅`, 'ok');</p>
+<p class="p1"><span class="Apple-converted-space">  </span>} else {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>showToast(`有 ${itemsData.length - correctCount} 个句子错误，请继续努力 ❌`, 'err');</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>renderSentences();</p>
+<p class="p1">});</p>
+<p class="p2"><br></p>
+<p class="p1">document.getElementById('resetBtn').addEventListener('click', () =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">  </span>// 清空 placements 并重新渲染</p>
+<p class="p1"><span class="Apple-converted-space">  </span>placements = {};</p>
+<p class="p1"><span class="Apple-converted-space">  </span>createItemsUI();</p>
+<p class="p1"><span class="Apple-converted-space">  </span>renderSentences();</p>
+<p class="p1"><span class="Apple-converted-space">  </span>showToast('游戏已重置，物品已回到房间。', 'ok');</p>
+<p class="p1">});</p>
+<p class="p2"><br></p>
+<p class="p1">/////////////////////////////////////////</p>
+<p class="p1">// 8) 帮助函数：Toast 提示</p>
+<p class="p1">/////////////////////////////////////////</p>
+<p class="p1">const toastEl = document.getElementById('toast');</p>
+<p class="p1">const toastText = document.getElementById('toastText');</p>
+<p class="p1">const toastIcon = document.getElementById('toastIcon');</p>
+<p class="p1">let toastTimer = null;</p>
+<p class="p2"><br></p>
+<p class="p1">function showToast(message, type='ok', duration=2200){</p>
+<p class="p1"><span class="Apple-converted-space">  </span>// type: 'ok' or 'err'</p>
+<p class="p1"><span class="Apple-converted-space">  </span>toastText.textContent = message;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>if(type === 'ok'){</p>
+<p class="p1"><span class="Apple-converted-space">    </span>toastEl.className = 'toast ok show';</p>
+<p class="p1"><span class="Apple-converted-space">    </span>toastIcon.textContent = '✅';</p>
+<p class="p1"><span class="Apple-converted-space">  </span>} else {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>toastEl.className = 'toast err show';</p>
+<p class="p1"><span class="Apple-converted-space">    </span>toastIcon.textContent = '❌';</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>if(toastTimer) clearTimeout(toastTimer);</p>
+<p class="p1"><span class="Apple-converted-space">  </span>toastTimer = setTimeout(()=&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>toastEl.classList.remove('show');</p>
+<p class="p1"><span class="Apple-converted-space">    </span>toastEl.classList.remove('ok');</p>
+<p class="p1"><span class="Apple-converted-space">    </span>toastEl.classList.remove('err');</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}, duration);</p>
+<p class="p1">}</p>
+<p class="p2"><br></p>
+<p class="p1">/////////////////////////////////////////</p>
+<p class="p1">// 9) 更新已放置计数</p>
+<p class="p1">/////////////////////////////////////////</p>
+<p class="p1">function updatePlacedCount(){</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const count = Object.keys(placements).length;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>placedCountEl.textContent = count;</p>
+<p class="p1">}</p>
+<p class="p2"><br></p>
+<p class="p1">/////////////////////////////////////////</p>
+<p class="p1">// 10) 初始化：渲染目标、物品、并绑定必要事件</p>
+<p class="p1">/////////////////////////////////////////</p>
+<p class="p1">function initGame(){</p>
+<p class="p1"><span class="Apple-converted-space">  </span>createTargetsUI();</p>
+<p class="p1"><span class="Apple-converted-space">  </span>createItemsUI();</p>
+<p class="p1"><span class="Apple-converted-space">  </span>renderSentences();</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>// 允许在页面上拖拽物品（拖回空白处不会删除放置记录）</p>
+<p class="p1"><span class="Apple-converted-space">  </span>// 如果想允许“将物品拖回地板以取消放置”，可额外实现一个 drop 区域，此处简化。</p>
+<p class="p1">}</p>
+<p class="p2"><br></p>
+<p class="p1">initGame();</p>
+<p class="p2"><br></p>
+<p class="p1">/* 附加：如果需要调试，可在控制台查看变量：</p>
+<p class="p1"><span class="Apple-converted-space">   </span>- itemsData, targetsData, placements</p>
+<p class="p1"><span class="Apple-converted-space">   </span>- 可调用 makeSentenceFor('book'), checkSentenceCorrect('book')</p>
+<p class="p1">*/</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;/script&gt;</p>
+<p class="p1">&lt;/body&gt;</p>
+<p class="p1">&lt;/html&gt;</p>
+</body>
+</html>
