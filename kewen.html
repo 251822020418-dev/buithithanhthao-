@@ -1,0 +1,330 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>听力练习 - 嫦娥奔月</title>
+
+<style>
+  body{
+    margin:0;
+    font-family: "Noto Sans SC","PingFang SC","Microsoft YaHei",sans-serif;
+    background:#fef7ff;
+    display:flex;
+    justify-content:center;
+    padding:20px;
+  }
+
+  .wrap{
+    width:100%;
+    max-width:1100px;
+    display:flex;
+    gap:20px;
+  }
+
+  /* 卡通风格色彩 */
+  :root{
+    --pink:#ffb7d5;
+    --yellow:#ffe38d;
+    --blue:#a5d8ff;
+    --green:#c7f7b4;
+    --card-bg:#ffffff;
+    --accent:#ff7ebe;
+    --correct:#d4ffcb;
+    --wrong:#ffdbdb;
+    --radius:18px;
+  }
+
+  /* 视频区 */
+  .left{
+    flex:1;
+    background:var(--card-bg);
+    padding:16px;
+    border-radius:var(--radius);
+    box-shadow:0 6px 20px rgba(255,130,190,0.2);
+  }
+
+  /* 题目区 */
+  .right{
+    flex:1;
+    background:var(--card-bg);
+    padding:16px;
+    border-radius:var(--radius);
+    box-shadow:0 6px 20px rgba(150,200,255,0.25);
+    max-height:85vh;
+    overflow:auto;
+  }
+
+  h1{
+    margin:0 0 10px;
+    font-size:22px;
+    color:#ff4fa0;
+    text-shadow:1px 1px 0 white;
+  }
+
+  video{
+    width:100%;
+    border-radius:14px;
+    background:black;
+  }
+
+  /* 进度条 */
+  .progress-container{
+    width:100%;
+    height:14px;
+    background:#ffeef7;
+    border-radius:10px;
+    margin-bottom:15px;
+    overflow:hidden;
+    border:2px solid #ffd2eb;
+  }
+
+  .progress-bar{
+    width:0%;
+    height:100%;
+    background:linear-gradient(90deg,#ff7ebe,#ffb7d5);
+    border-radius:10px;
+    transition:0.4s;
+  }
+
+  /* 题目卡片 */
+  .q{
+    background:#fff;
+    padding:14px;
+    border-radius:var(--radius);
+    margin-bottom:15px;
+    border:2px solid #ffe6f4;
+  }
+
+  .qtext{
+    font-size:15px;
+    color:#444;
+    font-weight:600;
+    margin-bottom:10px;
+  }
+
+  .opt{
+    padding:8px 10px;
+    display:flex;
+    align-items:center;
+    gap:10px;
+    border-radius:12px;
+    cursor:pointer;
+    border:2px solid transparent;
+  }
+
+  .opt:hover{
+    background:#fff4fb;
+  }
+
+  /* 提交等按钮 */
+  button{
+    padding:10px 16px;
+    border-radius:14px;
+    border:none;
+    cursor:pointer;
+    margin-right:10px;
+    font-weight:700;
+    font-size:15px;
+  }
+
+  #submitBtn{
+    background:var(--accent);
+    color:white;
+    box-shadow:0 4px 14px rgba(255,120,180,0.4);
+  }
+
+  #revealBtn{
+    background:#ffe8f4;
+    color:#ff4fa0;
+    border:2px solid #ffd2e8;
+  }
+
+  #resetBtn{
+    background:#e7f6ff;
+    color:#3a80c2;
+    border:2px solid #bce2ff;
+  }
+
+  button[disabled]{
+    opacity:0.5;
+    cursor:not-allowed;
+  }
+
+  /* 答案高亮 */
+  .correct{
+    background:var(--correct);
+    border-color:#88e37b !important;
+  }
+  .wrong{
+    background:var(--wrong);
+    border-color:#ff7a7a !important;
+  }
+
+  /* 响应式 */
+  @media(max-width:850px){
+    .wrap{ flex-direction:column; }
+  }
+</style>
+</head>
+
+<body>
+<div class="wrap">
+
+  <!-- 左侧视频 -->
+  <div class="left">
+    <h1>嫦娥奔月 · 听力练习</h1>
+    <video controls>
+      <source src="changebenyue.mp4" type="video/mp4">
+      您的浏览器不支持 video，请使用现代浏览器。
+    </video>
+  </div>
+
+  <!-- 右侧题目 -->
+  <div class="right">
+    <h1>选择题（共 5 题）</h1>
+
+    <!-- 进度条 -->
+    <div class="progress-container">
+      <div class="progress-bar" id="progressBar"></div>
+    </div>
+
+    <form id="quizForm">
+
+      <!-- Q1 -->
+      <div class="q" data-q="1">
+        <div class="qtext">1. 很久以前天空中出现了多少个太阳？</div>
+        <label class="opt"><input type="radio" name="q1" value="A">A. 1 个</label>
+        <label class="opt"><input type="radio" name="q1" value="B">B. 5 个</label>
+        <label class="opt"><input type="radio" name="q1" value="C">C. 10 个</label>
+        <label class="opt"><input type="radio" name="q1" value="D">D. 9 个</label>
+      </div>
+
+      <!-- Q2 -->
+      <div class="q" data-q="2">
+        <div class="qtext">2. 后羿为了救大家做了什么？</div>
+        <label class="opt"><input type="radio" name="q2" value="B">B. 射下九个太阳</label>
+        <label class="opt"><input type="radio" name="q2" value="A">A. 建房子</label>
+        <label class="opt"><input type="radio" name="q2" value="C">C. 砍树</label>
+        <label class="opt"><input type="radio" name="q2" value="D">D. 挖井</label>
+      </div>
+
+      <!-- Q3 -->
+      <div class="q" data-q="3">
+        <div class="qtext">3. 人们送给后羿什么？</div>
+        <label class="opt"><input type="radio" name="q3" value="A">A. 一把弓</label>
+        <label class="opt"><input type="radio" name="q3" value="B">B. 一包仙药</label>
+        <label class="opt"><input type="radio" name="q3" value="C">C. 一只玉兔</label>
+        <label class="opt"><input type="radio" name="q3" value="D">D. 一匹马</label>
+      </div>
+
+      <!-- Q4 -->
+      <div class="q" data-q="4">
+        <div class="qtext">4. 谁闯进家里想抢仙药？</div>
+        <label class="opt"><input type="radio" name="q4" value="A">A. 逢蒙</label>
+        <label class="opt"><input type="radio" name="q4" value="B">B. 后羿朋友</label>
+        <label class="opt"><input type="radio" name="q4" value="C">C. 皇帝</label>
+        <label class="opt"><input type="radio" name="q4" value="D">D. 玉兔</label>
+      </div>
+
+      <!-- Q5 -->
+      <div class="q" data-q="5">
+        <div class="qtext">5. 嫦娥最后住在了哪里？</div>
+        <label class="opt"><input type="radio" name="q5" value="A">A. 山洞</label>
+        <label class="opt"><input type="radio" name="q5" value="B">B. 海底</label>
+        <label class="opt"><input type="radio" name="q5" value="C">C. 月宫</label>
+        <label class="opt"><input type="radio" name="q5" value="D">D. 云朵</label>
+      </div>
+
+      <!-- 按钮 -->
+      <button type="button" id="submitBtn">提交答案</button>
+      <button type="button" id="revealBtn" disabled>显示正确答案</button>
+      <button type="button" id="resetBtn">重置</button>
+
+      <div id="scoreBox" style="margin-top:10px; font-size:18px; font-weight:800; color:#ff4fa0; display:none;">
+        得分：<span id="scoreNum">0</span> / 5
+      </div>
+    </form>
+  </div>
+</div>
+
+<script>
+const ANSWERS = {q1:'C', q2:'B', q3:'B', q4:'A', q5:'C'};
+let submitted = false;
+
+// 更新进度条
+const progressBar = document.getElementById("progressBar");
+const quizForm = document.getElementById("quizForm");
+
+function updateProgress(){
+  let checked = quizForm.querySelectorAll("input[type=radio]:checked").length;
+  let percent = (checked / 5) * 100;
+  progressBar.style.width = percent + "%";
+}
+
+quizForm.addEventListener("change", updateProgress);
+
+// 按钮
+const submitBtn = document.getElementById("submitBtn");
+const revealBtn = document.getElementById("revealBtn");
+const resetBtn = document.getElementById("resetBtn");
+const scoreBox = document.getElementById("scoreBox");
+const scoreNum = document.getElementById("scoreNum");
+
+// 清除高亮
+function clearHL(){
+  document.querySelectorAll(".q").forEach(q=>{
+    q.classList.remove("correct","wrong");
+    q.querySelectorAll("label").forEach(l=> l.style.outline="none");
+  });
+}
+
+// 提交答案
+submitBtn.onclick = function(){
+  clearHL();
+  let score=0;
+
+  Object.keys(ANSWERS).forEach((qname,i)=>{
+    let card = document.querySelector(`.q[data-q="${i+1}"]`);
+    let chosen = quizForm.querySelector(`input[name="${qname}"]:checked`);
+    if(!chosen) return;
+
+    if(chosen.value === ANSWERS[qname]){
+      card.classList.add("correct");
+      score++;
+    }else{
+      card.classList.add("wrong");
+    }
+  });
+
+  scoreNum.textContent = score;
+  scoreBox.style.display="block";
+  revealBtn.disabled = false;
+  submitted = true;
+};
+
+// 显示正确答案
+revealBtn.onclick = function(){
+  if(!submitted) return;
+
+  Object.keys(ANSWERS).forEach((qname,i)=>{
+    let card = document.querySelector(`.q[data-q="${i+1}"]`);
+    let correct = card.querySelector(`input[value="${ANSWERS[qname]}"]`);
+    if(correct){
+      correct.closest("label").style.outline="3px solid #ff7ebe";
+    }
+  });
+};
+
+// 重置
+resetBtn.onclick = function(){
+  quizForm.reset();
+  scoreBox.style.display="none";
+  revealBtn.disabled = true;
+  clearHL();
+  submitted=false;
+  updateProgress();
+};
+</script>
+</body>
+</html>
